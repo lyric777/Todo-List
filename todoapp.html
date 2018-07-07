@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.taskDone{
+				text-decoration: line-through;
+			}
+		</style>
+		
+	</head>
+	<body>
+	<div>
+		<div id="taskApp">
+			<h1>Todo List App</h1>
+			<table>
+				<tr v-for='(task,index) in tasks'>
+					<td><input type="checkbox" v-model="task.done"></td>
+					<td><span :class="{ taskDone: task.done }">
+					{{ index+1 }}.{{ task.name }}</span></td>
+					<td><button v-on:click="tasksDel(task)">Delete</button></td>
+				</tr>	
+			</table>
+
+	   		<form v-on:submit.prevent="addNewTodo">
+		    	<label for="new-todo">Add a new todo event: </label>
+		    	<input
+			      v-model="newTodoText"
+			      id="new-todo"
+			      placeholder="E.g. learn vue"
+			    >
+	    		<button>Add</button>
+	   		</form>
+		</div>
+	</div>
+	<script src="todoapp.js"></script>
+	</body>
+</html>
